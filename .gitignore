@@ -1,0 +1,63 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+~$*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+*.egg-info/
+.ipynb_checkpoints/
+
+# Project data & artifacts (NEVER upload)
+data/
+outputs/
+logs/
+**/checkpoints/
+**/runs/
+tmp/
+.cache/
+*.log
+
+# Large/common binaries & medical imaging formats
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.npz
+*.npy
+*.nii
+*.nii.gz
+*.dcm
+*.mha
+*.mhd
+*.raw
+*.tfrecord
+
+# Spreadsheets & heavy tabular (keep local or share elsewhere)
+*.xlsx
+*.xls
+*.csv.gz
+*.parquet
+
+# Images/videos (outputs)
+*.png
+*.jpg
+*.jpeg
+*.tiff
+*.mp4
