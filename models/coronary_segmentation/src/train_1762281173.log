@@ -1,0 +1,32 @@
+pairs=199 train=141 val=29
+patch=[160, 160, 160] batch=1 lr=0.0003
+Epoch 1/150 | Batch 10/141 | loss=0.993279 | time=40.9s
+Epoch 1/150 | Batch 20/141 | loss=0.985278 | time=74.5s
+Epoch 1/150 | Batch 30/141 | loss=0.987662 | time=108.2s
+Epoch 1/150 | Batch 40/141 | loss=0.991387 | time=144.1s
+Epoch 1/150 | Batch 50/141 | loss=0.988286 | time=177.7s
+Epoch 1/150 | Batch 60/141 | loss=0.994389 | time=211.4s
+Epoch 1/150 | Batch 70/141 | loss=0.992311 | time=246.3s
+Epoch 1/150 | Batch 80/141 | loss=0.988377 | time=279.9s
+Epoch 1/150 | Batch 90/141 | loss=0.990062 | time=313.4s
+Epoch 1/150 | Batch 100/141 | loss=0.991401 | time=347.0s
+Epoch 1/150 | Batch 110/141 | loss=0.987483 | time=380.4s
+Epoch 1/150 | Batch 120/141 | loss=0.993199 | time=414.2s
+Epoch 1/150 | Batch 130/141 | loss=0.987025 | time=447.9s
+Epoch 1/150 | Batch 140/141 | loss=0.985313 | time=482.0s
+Epoch 001 | train_dice_loss=0.9893 | val_dice=0.1282
+Epoch 2/150 | Batch 10/141 | loss=0.987528 | time=33.9s
+Epoch 2/150 | Batch 20/141 | loss=0.979866 | time=65.1s
+Epoch 2/150 | Batch 30/141 | loss=0.989630 | time=96.5s
+Epoch 2/150 | Batch 40/141 | loss=0.990355 | time=128.5s
+Epoch 2/150 | Batch 50/141 | loss=0.975652 | time=160.5s
+Epoch 2/150 | Batch 60/141 | loss=0.986316 | time=193.2s
+Epoch 2/150 | Batch 70/141 | loss=0.983513 | time=225.7s
+Epoch 2/150 | Batch 80/141 | loss=0.985123 | time=257.1s
+Epoch 2/150 | Batch 90/141 | loss=0.984136 | time=289.7s
+Epoch 2/150 | Batch 100/141 | loss=0.980869 | time=321.5s
+Epoch 2/150 | Batch 110/141 | loss=0.971253 | time=352.9s
+Epoch 2/150 | Batch 120/141 | loss=0.978294 | time=384.6s
+Epoch 2/150 | Batch 130/141 | loss=0.980134 | time=416.6s
+Epoch 2/150 | Batch 140/141 | loss=0.983111 | time=448.3s
+Epoch 002 | train_dice_loss=0.9813 | val_dice=0.1515

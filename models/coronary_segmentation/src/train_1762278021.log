@@ -1,0 +1,7 @@
+pairs=199 train=141 val=29
+patch=[160, 160, 160] batch=1 lr=0.0003
+Epoch 1/150 | Batch 10/141 | loss=0.995189  |  time=73.1s
+Epoch 1/150 | Batch 20/141 | loss=0.987889  |  time=147.5s
+Epoch 1/150 | Batch 30/141 | loss=0.991813  |  time=225.0s
+Epoch 1/150 | Batch 40/141 | loss=0.989965  |  time=297.4s
+Epoch 1/150 | Batch 50/141 | loss=0.993205  |  time=366.8s

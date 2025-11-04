@@ -1,0 +1,2 @@
+pairs=199 train=141 val=29
+patch=[160, 160, 160] batch=1 lr=0.0003
