@@ -20,9 +20,13 @@ Performance optimizations:
 - Safe file overwriting and Windows path handling
 """
 
-from __future__ import annotations
 
+from __future__ import annotations
+# Prevent thread oversubscription
 import os
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
 import csv
 import warnings
 import shutil
@@ -41,10 +45,7 @@ from numcodecs import Blosc, PackBits
 from scipy import ndimage
 import time
 
-# Prevent thread oversubscription
-os.environ.setdefault("OMP_NUM_THREADS", "1")
-os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
-os.environ.setdefault("MKL_NUM_THREADS", "1")
+
 
 # Global configuration
 VERBOSE = True
@@ -381,11 +382,10 @@ def parallel_preprocess(input_dir: Path,
             writer.writerows(results)
         print(f"Log saved to: {log_path}")
 
-# Keep existing helper functions (spacing_from_affine, etc.) ...
 
 if __name__ == "__main__":
-    INPUT_DIR = Path(r"data\imageCAS_data\801-1000")
-    OUTPUT_DIR = Path(r"data\processed_zarr\801-1000")
+    INPUT_DIR = Path(r"data\imageCAS_data\1-200")
+    OUTPUT_DIR = Path(r"data\processed_zarr\1-200")
     
     parallel_preprocess(
         input_dir=INPUT_DIR,
