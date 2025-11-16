@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: stenosis-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app
+      - ../../models:/app/models
+      - ../data:/app/data
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./data/stenosis_clinical.db
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - DEVICE=cuda
+    depends_on:
+      - redis
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - stenosis-network
+
+  # Celery Worker
+  celery-worker:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: stenosis-celery
+    command: celery -A app.services.tasks worker --loglevel=info
+    volumes:
+      - ../backend:/app
+      - ../../models:/app/models
+      - ../data:/app/data
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - DEVICE=cuda
+    depends_on:
+      - redis
+      - backend
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - stenosis-network
+
+  # Redis for Celery
+  redis:
+    image: redis:7-alpine
+    container_name: stenosis-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - stenosis-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: stenosis-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - stenosis-network
+
+volumes:
+  redis-data:
+
+networks:
+  stenosis-network:
+    driver: bridge
